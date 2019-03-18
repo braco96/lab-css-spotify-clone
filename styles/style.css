@@ -1,0 +1,240 @@
+/* =========================
+   Base & variables
+   ========================= */
+   :root{
+    --text: #1A1A1A;
+    --green: #00B172;
+    --white: #FFF;
+  }
+  
+  *,
+  *::before,
+  *::after{
+    box-sizing: border-box;
+  }
+  
+  html, body{
+    height: 100%;
+  }
+  
+  body{
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.5;
+  }
+  
+  /* Para que los anclajes no queden ocultos bajo la navbar fija */
+  [id]{
+    scroll-margin-top: 90px;
+  }
+  
+  /* =========================
+     Navbar
+     ========================= */
+  .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 16px 24px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    z-index: 1000;
+  }
+  
+  .navbar .logo{
+    height: 40px;
+    display: block;
+  }
+  
+  .nav-links{
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a{
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover{
+    color: var(--green);
+  }
+  
+  /* Espaciador para compensar la navbar fija */
+  .nav-spacer{
+    height: 72px; /* ≈ altura navbar */
+  }
+  
+  /* =========================
+     Hero
+     ========================= */
+  .hero{
+    position: relative;
+    background-image: url('../images/landing.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 72px); /* resta altura navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 24px;
+  }
+  
+  /* Overlay para mejorar contraste del texto sobre la imagen */
+  .hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.25)
+    );
+  }
+  
+  .hero-text{
+    position: relative; /* sobre el overlay */
+    max-width: 680px;
+  }
+  
+  .hero h1{
+    margin: 0 0 12px;
+    font-size: clamp(28px, 4vw, 48px);
+  }
+  
+  .hero p{
+    margin: 0;
+    font-size: clamp(16px, 2.2vw, 20px);
+    opacity: .95;
+  }
+  
+  /* =========================
+     What's on / Features
+     ========================= */
+  .whats-on{
+    padding: 72px 24px;
+    text-align: center;
+  }
+  
+  .whats-on h2{
+    margin: 0 0 16px;
+    font-size: clamp(24px, 3.2vw, 32px);
+  }
+  
+  .features{
+    display: flex;
+    flex-wrap: wrap;           /* permite pasar a 2/1 columnas en móvil */
+    gap: 28px;
+    justify-content: center;
+    margin-top: 36px;
+  }
+  
+  .feature{
+    flex: 1 1 260px;           /* mínimo 260px, crece hasta llenar */
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  
+  .feature img{
+    height: 80px;
+    width: auto;
+  }
+  
+  .feature h3{
+    color: var(--green);
+    margin: 14px 0 8px;
+  }
+  
+  .feature p{
+    margin: 0;
+    color: #333;
+  }
+  
+  /* =========================
+     Green section
+     ========================= */
+  .green-section{
+    background-color: var(--green);
+    color: var(--white);
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden; /* por si el logo decorativo sobresale */
+  }
+  
+  .green-section h2{
+    margin: 0 0 8px;
+    font-size: clamp(24px, 3.2vw, 32px);
+  }
+  
+  .green-section p{
+    margin: 0;
+    opacity: .95;
+  }
+  
+  .green-columns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+  }
+  
+  .green-columns .left{
+    flex: 1 1 320px;
+    max-width: 560px;
+  }
+  
+  .green-columns .right img{
+    width: min(320px, 100%);
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.15);
+  }
+  
+  /* Logo blanco decorativo en la esquina */
+  .logo-bg{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: 80px;
+    width: auto;
+    opacity: .85;
+  }
+  
+  /* =========================
+     Responsive tweaks
+     ========================= */
+  @media (max-width: 768px){
+    .navbar{
+      padding: 14px 18px;
+    }
+    .nav-links{
+      gap: 16px;
+    }
+    .nav-spacer{
+      height: 64px;
+    }
+    .green-columns{
+      justify-content: center;
+      text-align: center;
+    }
+    .green-section .left{
+      max-width: none;
+    }
+  }
+  
